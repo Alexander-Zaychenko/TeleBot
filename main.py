@@ -90,14 +90,16 @@ def jokes(message):
     try:
         if message.text.lower() in '123456789':
             bot.send_message(message.chat.id, list_of_jokes[0])
+            print(message.chat.id)
             del list_of_jokes[0]
         elif message.text.lower() in '111213141516171819':
             bot.send_message(message.chat.id, list_of_jokes2[0])
+            print(message.chat.id)
             del list_of_jokes2[0]
         else:
             bot.send_message(message.chat.id, 'Не не, ты меня не проведёшь! Введи цифру от 1 до 19: ')
     except:
-        raise 'Error!'
+        bot.send_message(message.chat.id, "Error" )
 
 
 @bot.message_handler(commands=['go'])
@@ -105,4 +107,8 @@ def hello2(message):
     bot.send_message(message.chat.id, 'Привет, напиши мне любую цифру от 10 до 19, а я тебе пришлю анекдот: ')
 
 
+
 bot.polling()
+
+
+
